@@ -8,5 +8,5 @@ The [microservice architecture pattern language](https://microservices.io/) aims
 
 The author frames the need for microservices in terms of the technical debt crisis: Changing requirements in the middle of a project damage the original software architecture, causing unforeseen changes and fixes, which will significantly delay the software development process. Can't blame on our nontechnical colleagues - they have complex challenges of their own. It's time to grow up and accept that we have a problem: can't write software fast enough. He suggests that components are being built to address technical infrastructure, not the business logic. Components like that would speed up development. Our components tend to be comprehensive in functionality and they are difficult to compose them together - will need lots of glue code. By trying to cover too many cases, we make the simple ones too complex. *Business logic* is the functionality that's directly specific to the business goal at hand. Eg., user-profile management. It is specific to the programming language, not generic. Composition is powerful - don't modify components; instead, write new ones to handle special cases. As a solution, components should be working, but they aren't. Microservices built the right way, can help do that. 
 
-
+Case study: a microblogging startup: 
 
