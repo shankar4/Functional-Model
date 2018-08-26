@@ -124,7 +124,7 @@ SYSTEMC_HOME="/home/shankar/systemc-2.3.1/"
 export LD_LIBRARY_PATH=/home/shankar/systemc-2.3.1/lib-linux64
 
 sudo gedit ~/.bashrc and modify from /usr/local to /home/shankar:
-# added by Ravi Shankar for SystemC installation
+#added by Ravi Shankar for SystemC installation
 SYSTEMC_HOME="/home/shankar/systemc-2.3.1/"
 export LD_LIBRARY_PATH=/home/shankar/systemc_2.3.1/lib-linux64:$LD_LIBRARY_PATH
 
@@ -182,10 +182,9 @@ Directory names containing an = are no longer legal unless they also have an exp
 
 ldconfig should normally be run by the super-user as it may require write permission on some root owned directories and files. If you use -r option to change the root directory, you don't have to be super-user though as long as you have sufficient right to that directory tree.
 
+#### Continued with RTL and behavioral level SystemC code examples:
 
-
-
-
+1. Copy 'helloSystemC' and give it the name of 'fullAdder.' This should copy the whole set of paths etc.
 
 
 
