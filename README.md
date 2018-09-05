@@ -5,7 +5,7 @@ After some exploration of HDLs (Hardware Description Languages), I have decided 
 Ref for installation of SystemC on Linux with Eclipse is [here](http://euinovation.blogspot.com/2016/02/systemc-development-of-eclipse-on-linux.html).
 Update: 8/10/18: I have installed SystemC and Eclipse IDE on Linux. Raw notes ('SystemC Installation Notes') are included [here](https://github.com/shankar4/Functional-Model/blob/master/SystemC%20Installation%20Notes) (will improve later). I have verified that both C++ and SystemC code run successfully (Hello World and Hello SystemC code). The code is also in the SystemC installation notes. 
 
-
+I am installing [GTKWave Analyzer](http://gtkwave.sourceforge.net/gtkwave.pdf), as suggested in this [paper](http://www.ijcst.com/vol24/2/mitesh.pdf) on RISC implementation using SystemC. 
 
 
 Miscellaneous notes: \
