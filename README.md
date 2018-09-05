@@ -8,5 +8,7 @@ Update: 8/10/18: I have installed SystemC and Eclipse IDE on Linux. Raw notes ('
 I am installing [GTKWave Analyzer](http://gtkwave.sourceforge.net/gtkwave.pdf), as suggested in this [paper](http://www.ijcst.com/vol24/2/mitesh.pdf) on RISC implementation using SystemC. 
 
 
-Miscellaneous notes: \
+
+Ignore the following: Moved from Verilog to SystemC. Kept the info for future ref. 
+Miscellaneous notes:
 Ref info for Verilog: [ModelSim](https://www.altera.com/products/design-software/model---simulation/modelsim-altera-software.html) simulator will be used. The starter edition is free; it supports mixed HDL simulations (VHDL, Verilog, and System Verilog) and can synthesize to FPGAs. 
