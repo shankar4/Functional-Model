@@ -217,8 +217,11 @@ Error message: some jar files are missing.
 I think the best option is to uninstall eclipse and install again under /usr/local as was suggested above. I guess I will have to do that. 
 
 To unistall, [steps](https://www.wikihow.com/Uninstall-Ubuntu-Software):
->dpkg --list \
-#locate app to be deleted eg. avg.exe\
+>dpkg --list >packagelist.txt \
+#locate app to be deleted eg. avg.exe with more command - the list is long \
+#I found many eclipse entries! \
+#it is easier just to update the jar files. \
+#Here is the [link](https://stackoverflow.com/questions/3412617/java-lang-classnotfoundexception-org-eclipse-core-runtime-adaptor-eclipsestarte) \
 sudo apt-get --purge remove avg.exe \
 #enter pw \
 #confirm deletion \
