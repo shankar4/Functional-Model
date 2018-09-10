@@ -213,7 +213,7 @@ ldconfig should normally be run by the super-user as it may require write permis
 1. Copy 'helloSystemC' and give it the name of 'fullAdder.' This should copy the whole set of paths etc.
 
 **Updating to Version 18 Ubuntu caused something to break** 
-Error message: some jar files are missing.
+Error message: some jar files are missingin in Eclipse, not SystemC.
 I think the best option is to uninstall eclipse and install again under /usr/local as was suggested above. I guess I will have to do that. 
 
 To unistall, [steps](https://www.wikihow.com/Uninstall-Ubuntu-Software):
