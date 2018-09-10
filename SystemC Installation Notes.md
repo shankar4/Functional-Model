@@ -108,7 +108,7 @@ cout << "Hello World.\n"; \
 } \
 };
 
-// sc_main in top level function like in C++ main \
+>// sc_main in top level function like in C++ main \
 int sc_main(int argc, char* argv[]) { \
 hello_world hello("HELLO"); \
 // Print the hello world \
