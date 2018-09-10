@@ -7,11 +7,9 @@ Update: 8/10/18: I have installed SystemC and Eclipse IDE on Linux. Raw notes ('
 
 I am installing [GTKWave Analyzer](http://gtkwave.sourceforge.net/gtkwave.pdf), as suggested in this [paper](http://www.ijcst.com/vol24/2/mitesh.pdf) on RISC implementation using SystemC. Following the steps in the user guide. Download gtkwave from here: ???. Extract and put folder in your home directory. Next step: ./configure --prefix=/usr. Error message: Could not find tclConfig.sh. I do have a folder tcltk under /usr/lib. How to install the .sh file is given [here](https://www.linuxquestions.org/questions/linux-newbie-8/where-can-i-find-tclconfig-sh-207239/) - look for stas12 comment. I used: apt list tcl to find the version of tcl I have: 8.6.0+9. Then, sudo apt-get install tcl8.6-dev. It was loaded in /usr/lib/tcl8.6. I retried it thus: ./configure --prefix=/usr --with-tcl=/usr/lib/tcl8.6. Now the error msg:  can't find tkConfig.sh. It is a similar procedure: apt list tk -- mine is 8.6. Then sudo apt-get install tk8.6-dev. Now the tkConfig.sh is in /usr/lib/tk8.6. The new command is: ./configure --prefix=/usr --with-tcl=/usr/lib/tcl8.6 -- with-tk=/usr/lib/tk8.6. Now the error message is: install gperf from a ftp site  ftp://ftp.gnu.org/pub/gnu/gperf. I downloaded and extracted - it is in my home directory. 
 
-9/7/18: **First upgrading to Ubuntu 18/04, 'Bionic Beavwer' as it is available**. Some 3rd parthy entries in my source.list are disabled. Re-enable them later with the 'software properties' tool in the package manager. 
+9/7/18: **First upgrading to Ubuntu 18/04, 'Bionic Beaver' as it is available**. Some 3rd parthy entries in my source.list are disabled. Re-enable them later with the 'software properties' tool in the package manager. I had it working as of 9/8/18. There were a few surprises along the way, but all is well now. See Ubuntu.md documentation under Functional Genomics
 
-
-
-
-Ignore the following: Moved from Verilog to SystemC. Kept the info for future ref. 
+------------------------------------------------------------------------------------------------------
+*Ignore the following*: Moved from Verilog to SystemC. Kept the info for future ref. 
 Miscellaneous notes:
 Ref info for Verilog: [ModelSim](https://www.altera.com/products/design-software/model---simulation/modelsim-altera-software.html) simulator will be used. The starter edition is free; it supports mixed HDL simulations (VHDL, Verilog, and System Verilog) and can synthesize to FPGAs. 
