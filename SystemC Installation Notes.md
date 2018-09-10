@@ -13,11 +13,11 @@ sudo make install
 #I fixed the paths within Eclipse, as given below and the C++ code works. 
 
 #Export \
->export SYSTEMC_HOME=/usr/local/systemc-2.3.1/ 
->sudo gedit /etc/environment 
+>export SYSTEMC_HOME=/usr/local/systemc-2.3.1/ \
+sudo gedit /etc/environment 
 
 #and add lines below \
-SYSTEMC_HOME="/usr/local/systemc-2.3.1/" \
+>SYSTEMC_HOME="/usr/local/systemc-2.3.1/" \
 export LD_LIBRARY_PATH=/usr/local/systemc-2.3.1/lib-linux64 
 
 //gedit accepted these lines, but had some error messages, such as "gedit-encoding not supported
