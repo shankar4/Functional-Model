@@ -2,22 +2,24 @@ Follow steps here: http://euinovation.blogspot.com/2016/02/systemc-development-o
 
 The untarred SystemC folder will be in the home directory. Follow the 'install' file. Works fine till the gmake step. There is no gmake on this system. Now, I will follow the steps at the URL above (i.e., sudo make etc). Worked OK. Now, I am switching back to the install step and do a check: sudo make check - This will compile and run the examples in the subdirectory examples. It passed all the 11 tests
 
-Then, back to URL steps: sudo make clean , sudo make -j3, -- done
+Then, back to URL steps: 
+>sudo make clean  
+sudo make -j3 
 
 Next to do: sudo make install in this directory: ~/systemc-2.3.1/objdir
 8/10/2018 (continued):
-sudo make install
+>sudo make install
 
-#Tutorials use /usr/local path. I installed in my home directory \
-#So, had to replce /usr/local with /home/shankar, in a few steps below. \
-#I fixed the paths within Eclipse, as given below and the C++ code works. 
+Tutorials use /usr/local path. I installed in my home directory - **redo soon!** \
+So, had to replce /usr/local with /home/shankar, in a few steps below. \
+I fixed the paths within Eclipse, as given below and the C++ code works. 
 
-#Export 
+Export 
 >export SYSTEMC_HOME=/usr/local/systemc-2.3.1/ \
 sudo gedit /etc/environment 
 
 #and add lines below 
->SYSTEMC_HOME="/usr/local/systemc-2.3.1/" \
+>SYSTEMC_HOME="/usr/local/systemc-2.3.1/" 
 export LD_LIBRARY_PATH=/usr/local/systemc-2.3.1/lib-linux64 
 
 gedit accepted these lines, but had some error messages, such as "gedit-encoding not supported". \
