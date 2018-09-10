@@ -8,9 +8,9 @@ Next to do: sudo make install in this directory: ~/systemc-2.3.1/objdir
 8/10/2018 (continued):
 sudo make install
 
-// Tutorials use /usr/local path. I installed in my home directory
-// So, had to replce /usr/local with /home/shankar, in a few steps below. 
-// I fixed the paths within Eclipse, as given below and the C++ code works.
+// Tutorials use /usr/local path. I installed in my home directory \
+// So, had to replce /usr/local with /home/shankar, in a few steps below. \
+// I fixed the paths within Eclipse, as given below and the C++ code works. \
 
 //Export
 export SYSTEMC_HOME=/usr/local/systemc-2.3.1/
