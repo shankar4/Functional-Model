@@ -216,6 +216,18 @@ ldconfig should normally be run by the super-user as it may require write permis
 Error message: some jar files are missing.
 I think the best option is to uninstall eclipse and install again under /usr/local as was suggested above. I guess I will have to do that. 
 
+To unistall, [steps](https://www.wikihow.com/Uninstall-Ubuntu-Software):
+>dpkg --list \
+#locate app to be deleted eg. avg.exe\
+sudo apt-get --purge remove avg.exe \
+#enter pw \
+#confirm deletion \
+#if not removed properly \
+sudo aptitude remove avg.exe \
+
+
+
+
 
 
 
