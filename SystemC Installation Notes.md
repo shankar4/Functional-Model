@@ -12,55 +12,66 @@ sudo make install
 #So, had to replce /usr/local with /home/shankar, in a few steps below. \
 #I fixed the paths within Eclipse, as given below and the C++ code works. 
 
-#Export \
+#Export 
 >export SYSTEMC_HOME=/usr/local/systemc-2.3.1/ \
 sudo gedit /etc/environment 
 
-#and add lines below \
+#and add lines below 
 >SYSTEMC_HOME="/usr/local/systemc-2.3.1/" \
 export LD_LIBRARY_PATH=/usr/local/systemc-2.3.1/lib-linux64 
 
-//gedit accepted these lines, but had some error messages, such as "gedit-encoding not supported
-". From forums, it appears that these are harmless. To avoid this problem, use nano or vi, if from command line; else, open gedit from the launcher.
-// another possibility is leafpad for command line execution
-//sudo apt update
-//sudo apt install leafpad
-// Another suggestion, helpful for Eclipse.
-//sudo apt-get install gksu gedit
-//gksu gedit /usr/share/applications/eclipse-oxygen.desktop
-//The gksu and gksudo commands allow you to elevate your permissions when running graphical 
-//applications. More here: http://www.nongnu.org/gksu/
+gedit accepted these lines, but had some error messages, such as "gedit-encoding not supported". \
+From forums, it appears that these are harmless. \
+To avoid this problem, use nano or vi, if from command line; else, open gedit from the launcher. \
+another possibility is leafpad for command line execution
+>sudo apt update
+sudo apt install leafpad
 
-sudo gedit ~/.bashrc  // the website missed the gedit part in this command
-SYSTEMC_HOME="/usr/local/systemc-2.3.1/"
+Another suggestion, helpful for Eclipse.
+>sudo apt-get install gksu gedit
+gksu gedit /usr/share/applications/eclipse-oxygen.desktop
+
+The gksu and gksudo commands allow you to elevate your permissions when running graphical \
+applications. More here: http://www.nongnu.org/gksu/
+
+>sudo gedit ~/.bashrc 
+#note: the website missed the gedit part in this command
+
+>SYSTEMC_HOME="/usr/local/systemc-2.3.1/"
 export LD_LIBRARY_PATH=/usr/local/systemc_2.3.1/lib-linux64:$LD_LIBRARY_PATH
 
-//Added these at the end of the file. Same gedit error messages. Could not use the launcher since 
-//I could not locate these files!
+Added these at the end of the file. Same gedit error messages. Could not use the launcher \
+since I could not locate these files!
 
-// Now installing Eclipse
-sudo apt-get install eclipse eclipse-cdt g++
-//Launch Eclipse through launcher. It must be at the root; but it launches. Put the workspace as
-// SystemCSpace
-Once Eclipse is open, File->New->Project->c/C++ -> C++. Call it "HelloWorld". Choose  HelloWorld C++ Project and Linux GCC toolchain.
-//add paths to systemC folders
-Click Project->Properties. Navigate to C/C++ Build -> Settings -> Tool Settings tab.
-Under GCC C++ Compiler -> Includes, <click on the add icon on top RHS>> -- 'Add' /usr/local/systemc-2.3.1/include to include paths. 
+Now installing Eclipse\
+>sudo apt-get install eclipse eclipse-cdt g++
 
-Add systemc dependent library location in C++ linker settings:
-Under C++Linker -> libraries,
+Launch Eclipse through launcher. It must be at the root; but it launches. \
+Put the workspace as SystemCSpace \
+Once Eclipse is open, 
+>File->New->Project->c/C++ -> C++. Call it "HelloWorld". Choose  HelloWorld C++ Project and Linux GCC toolchain.
+
+Add paths to systemC folders \
+>Click Project->Properties. Navigate to C/C++ Build -> Settings -> Tool Settings tab.
+Under GCC C++ Compiler -> Includes, <click on the add icon on top RHS>> 
+ -- 'Add' /usr/local/systemc-2.3.1/include to include paths. 
+
+Add systemc dependent library location in C++ linker settings: \
+>Under C++Linker -> libraries,
 add /usr/local/systemc-2.3.1/lib-linux to Library Search Paths. 
-// I did not find lib-linux, but found lib-linux64 and sysc under /include. So, I included both paths. 
-add systemc and m to libraries
 
-// NOTE: I mistakenly installed systemC in shankar directory. So, paths changed to the following
-// Instead of /usr/local/systemc-2.3.1/include, use /home/shankar/systemc-2.3.1/
-// Instead of /usr/local/systemc-2.3.1/lib-linux, use /home/shankar/systemc-2.3.1/lib-linux64
-// and /home/shankar/systemc-2.3.1/include
+I did not find lib-linux, but found lib-linux64 and sysc under /include. \
+So, I included both paths. 
+>add systemc and m to libraries
 
-Reboot the PC
-Open the HelloWorld project, build and Run.
-// if it does not run, look at the errors. My paths were wrong (were /usr/local -- had to change to /home/shankar). Based on that, I cleaned, and then built, and then did run successfully. It gave this result: !!!Hello World!!!
+NOTE: I mistakenly installed systemC in shankar directory. So, paths changed to the following
+>Instead of /usr/local/systemc-2.3.1/include, use /home/shankar/systemc-2.3.1/
+Instead of /usr/local/systemc-2.3.1/lib-linux, use /home/shankar/systemc-2.3.1/lib-linux64
+and /home/shankar/systemc-2.3.1/include
+
+**Reboot the PC**
+Open the HelloWorld project, build and Run. \
+#if it does not run, look at the errors. My paths were wrong (were /usr/local -- had to change to /home/shankar). Based on that, I cleaned, and then built, and then did run successfully. It gave this result: !!!Hello World!!!
 
 
 Start a new project 'Hello SystemC' (use default hello world project and replace the code there) and include this .cpp code:
