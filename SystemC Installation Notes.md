@@ -48,7 +48,7 @@ since I could not locate these files!
 Now installing Eclipse\
 >sudo apt-get install eclipse eclipse-cdt g++
 
-Launch Eclipse through launcher. It must be at the root; but it launches. **Fix this problem - move it from Shankar home** \
+Launch Eclipse through launcher. It must be at the root; but it launches.  \
 Put the workspace as SystemCSpace \
 Once Eclipse is open, \
 >File->New->Project->c/C++ -> C++. \
