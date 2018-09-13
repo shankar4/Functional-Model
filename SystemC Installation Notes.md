@@ -213,7 +213,7 @@ ldconfig should normally be run by the super-user as it may require write permis
 1. Copy 'helloSystemC' and give it the name of 'fullAdder.' This should copy the whole set of paths etc.
 
 **Updating to Version 18 Ubuntu caused something to break** 
-Error message: some jar files are missingin in Eclipse, not SystemC.
+Error message: some jar files are missingin in Eclipse ini file (see below), not SystemC.
 I think the best option is to uninstall eclipse and install again under /usr/local as was suggested above. I guess I will have to do that. 
 
 To unistall, [steps](https://www.wikihow.com/Uninstall-Ubuntu-Software):
@@ -227,6 +227,63 @@ sudo apt-get --purge remove avg.exe \
 #confirm deletion \
 #if not removed properly \
 sudo aptitude remove avg.exe \
+
+**9/13/18 Update**: 
+I reinstalled with SystemC2.3.2 and Eclipse. I will document the steps soon. Eclipse would not launch. The error message was the same as before: 
+Unable to open Eclipse Error: 
+/home/shankar/.eclipse/org.eclipse.platform_3.8_155965261/configuration/1536605100695.log
+
+I could not open it here, but used the terminal to get this error message:
+>more /home/shankar/.eclipse/org.eclipse.platform_3.8_155965261/configuration/1536605100695.log
+
+!SESSION Mon Sep 10 14:45:00 EDT 2018 ------------------------------------------
+!ENTRY org.eclipse.equinox.launcher 4 0 2018-09-10 14:45:00.761
+!MESSAGE Exception launching the Eclipse Platform:
+!STACK
+java.lang.ClassNotFoundException: org.eclipse.core.runtime.adaptor.EclipseStarte
+r
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:609)
+	at java.lang.ClassLoader.loadClassHelper(ClassLoader.java:926)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:871)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:854)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:626)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+Here is a how to: https://stackoverflow.com/questions/3412617/java-lang-classnotfoundexception-org-eclipse-core-runtime-adaptor-eclipsestarte 
+
+There may be some solutions - I am yet to follow up. two possible solutions that worked for the authors, but not others  are documented below. But the bottom line: It is based on Eclipse 3.8 for Ubuntu (current version Eclipse 4.4) and Eclipse has not had (volunteer) help in updating. **Eclipse is probably OK for Windows** - need to check. Here are two links on fixes to make Eclipse 3.8 work on Ubuntu: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=891956 and https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=681726 . So, it appears that going forwaard Eclipse is not a feaislble solution for SystemC on Ubuntu. . I will document below two suggestions that I will explore. Not sure whether they will work or whether they will work for others. 
+
+One solution: 
+The author resolved this issue (on his system) by reinstalling libequinox
+>sudo apt-get install --reinstall libequinox-osgi-java \
+The debug output claimed that the framework has been found, but this was 
+a lie since: /usr/lib/eclipse/plugins/org.eclipse.osgi_3.8.1.dist.jar was missing. \
+Maybe there needs to be better sanity checking here.... 
+
+Another solution: 
+In your config.ini file of eclipse eclipse\configuration\config.ini check this three things:
+osgi.framework=file\:plugins\\org.eclipse.osgi_3.4.2.R34x_v20080826-1230.jar
+osgi.bundles=reference\:file\:org.eclipse.equinox.simpleconfigurator_1.0.0.v20080604.jar@1\:start
+org.eclipse.equinox.simpleconfigurator.configUrl=file\:org.eclipse.equinox.simpleconfigurator\\bundles.info
+And check whether these jars are in place or not, the jar files depend upon your version of eclipse .
+
+One user in 2012 found that /usr/lib/eclipse/plugins/org.eclipse.osgi_3.7.2.dist.jar is missing. I do have /usr/lib/eclipse/dropins/sdk/plugins/org.eclipse.osgi.source_3.7.2.dist.jar. He downloaded libequinox-osgi-java from packages.ubuntu.com/precise/all/libequinox-osgi-java/download and extracted all the files himself. For some reason they weren't installed by Ubuntu. *In my own case, I am unable to locate 2 of the three jar files. Much more exploration is needed. The question now is: Is it worth it. Just give up and move to another IDE?*
+
+Another user in 2012 did this: If you want to manually move your Eclipse installation you need to find and edit relative references in the following files.
+Relative to Eclipse install dir:
+    • configuration/org.eclipse.equinox.source/source.info 
+    • configuration/org.eclipse.equinox.simpleconfigurator/bundles.info 
+    • configuration/config.ini 
+    • eclipse.ini 
+For me in all these files there was a ../ reference to a .p2 folder in my home directory. Found them all using a simple grep:
+grep '../../../../' * -R
+Then just hit it with sed or manually go change it. In my case I moved it up one folder so easy fix:
+grep -rl '../../../../' * -R | xargs sed -i 's/..\/..\/..\/..\//..\/..\/..\//g'
+Now Eclipse runs fine again. *I do see a P2 reference. Need to understand the scripting there to better understand what is the significance*
+
+
 
 
 
