@@ -288,6 +288,9 @@ Now Eclipse runs fine again. *I do see a P2 reference. Need to understand the sc
 2. Netbeans supporfs Linux64. Needs JDK 8. Use this to find the version: 
 >javac --version \
 javac 10.0.2
+Link on JDK update/installation is [here](https://www3.ntu.edu.sg/home/ehchua/programming/howto/JDK_Howto.html). Not relevant in my case.
+
+
 
 
 
