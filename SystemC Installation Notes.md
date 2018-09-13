@@ -285,7 +285,10 @@ Now Eclipse runs fine again. *I do see a P2 reference. Need to understand the sc
 
 #### Other IDEs:
 1. For SysrtemC subset that is synthesizable to FPGA: http://www.ht-lab.com/scbuilder.htm -- only for Windows
-2. 
+2. Netbeans supporfs Linux64. Needs JDK 8. Use this to find the version: 
+>javac --version \
+javac 10.0.2
+
 
 
 
