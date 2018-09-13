@@ -262,7 +262,7 @@ The debug output claimed that the framework has been found, but this was
 a lie since: /usr/lib/eclipse/plugins/org.eclipse.osgi_3.8.1.dist.jar was missing. \
 Maybe there needs to be better sanity checking here.... 
 
-Another solution: 
+Another solution: [Ref](https://stackoverflow.com/questions/3412617/java-lang-classnotfoundexception-org-eclipse-core-runtime-adaptor-eclipsestarte)
 In your config.ini file of eclipse eclipse\configuration\config.ini check this three things:
 osgi.framework=file\:plugins\\org.eclipse.osgi_3.4.2.R34x_v20080826-1230.jar
 osgi.bundles=reference\:file\:org.eclipse.equinox.simpleconfigurator_1.0.0.v20080604.jar@1\:start
