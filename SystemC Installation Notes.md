@@ -283,6 +283,10 @@ Then just hit it with sed or manually go change it. In my case I moved it up one
 grep -rl '../../../../' * -R | xargs sed -i 's/..\/..\/..\/..\//..\/..\/..\//g'
 Now Eclipse runs fine again. *I do see a P2 reference. Need to understand the scripting there to better understand what is the significance*
 
+#### Other IDEs:
+1. For SysrtemC subset that is synthesizable to FPGA: http://www.ht-lab.com/scbuilder.htm -- only for Windows
+2. 
+
 
 
 
