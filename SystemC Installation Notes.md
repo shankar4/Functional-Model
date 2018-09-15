@@ -32,7 +32,7 @@ sudo make -j3
 sudo make install
 export SYSTEMC_HOME=/usr/local/systemc-2.3.2/
 
-//Smart quote are needed: See https://vinaydvd.wordpress.com/2012/05/30/installing-systemc-in-ubuntu/ 
+Smart quote are needed: See https://vinaydvd.wordpress.com/2012/05/30/installing-systemc-in-ubuntu/  \
 
 sudo gedit /etc/environment and add:
      SYSTEMC_HOME=”/usr/local/systemc-2.3.2/”
