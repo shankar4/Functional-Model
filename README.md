@@ -39,24 +39,25 @@ Eclipse Installer \
 After saving it, I double clicked on the 'eclipse-inst' at the same level as the eclipse.ini file. this automatically installed the ecllpse folder to /usr/shankar/eclipse. The .exe file will be here: /home/shankar/eclipse/cpp-photon/eclipse/eclipse.exe. I double clicked on it and launched Eclipse and it launched just fine. I directed to my workspace at 'SystemCspace' and tried out my 3 examples. I had to update the links to systemC 2.3.2 libraries now installed under /usr/local (see notes elsewhere), rebuild and run. All of them ran fine. 
 
 For eaay accessibility, I right clicked on this .exe file and copy/pasted it to desktop. Unforuntely, it is a generic diamond symbol and it would be nice to associate with the actual eclipse icon. There was a solution for that [here](http://donovanbrown.com/post/Adding-Eclipse-to-Launcher-on-Ubuntu-1604). Here are the steps, as relevant to my system:
->Open a text editor
-    Copy and paste the following text into the editor:
-    [Desktop Entry]
-    Version=1.0
-    Name=Eclipse
-    Comment=Java IDE
-    Type=Application
-    Categories=Development;IDE;
-    Exec=/home/{username}/Programs/eclipse/eclipse
-    Terminal=false
-    StartupNotify=true
-    Icon=/home/{username}/Programs/eclipse/icon.xpm
-    Name[en_US]=Eclipse
-    Update any paths if you extracted Eclipse to a different location
-    Save the file as eclipse.desktop in /home/{username}/.local/share/applications/
-    Reboot your machine
-    Search for Eclipse
-    Drag and drop the Eclipse icon to the launcher 
+
+cd to /home/shankar/.local/share/applications/ and open gedit with filename of eclipse.desktop, and enter (copy and paste with appropriate change for username in place of shankar):
+   
+>[Desktop Entry] \
+Version=1.0 \
+Name=Eclipse \
+Comment=Java IDE \
+Type=Application \
+Categories=Development;IDE; \
+Exec=/home/shankar/eclipse/cpp-photon/eclipse/eclipse \
+Terminal=false \
+StartupNotify=true \
+icon=/home/shankar/eclipse/cpp-photon/eclipse/icon.xpm \
+Name[en_US]=Eclipse \
+
+Save the file. Reboot your machine. I found the Eclpse icon  in the dot matrix at left hand side bottom ('Applications'). it launched correctly when clicked on. 
+
+So, I am where I was 4 days ago. Need to try out the many SystemC examples that came with the SystemC 2.3.2 folder. Also, examples from Grotker's book.
+All this is documented here, lest I forget. Soon, i will put together a tutorial style installation document on Systemc 2.3.2 installation on Ubuntu V 18 using Eclipse 4.8 (Oxygen). It uses Java SDK 8. 
 
 
 ------------------------------------------------------------------------------------------------------
