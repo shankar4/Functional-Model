@@ -10,7 +10,32 @@ I am installing [GTKWave Analyzer](http://gtkwave.sourceforge.net/gtkwave.pdf), 
 I physically naivigated around and found that gtk is under /usr/bin, not /usr/local/bin, as implied above.  It is listed in the above PATH list. So, I am OK. Now, I can see the app icon in the dot martrix ('show application') on the left bottom. Laucn it from there. But, first you need a vcd dump from a HDL simulation. 
 
 ------------------------------------------------------------------------------------------------------------
-9/7/18: Earlier note - ignore: **First upgrading to Ubuntu 18/04, 'Bionic Beaver' as it is available**. Some 3rd parthy entries in my source.list are disabled. Re-enable them later with the 'software properties' tool in the package manager. I had it working as of 9/8/18. There were a few surprises along the way, but all is well now. See Ubuntu.md documentation under Functional Genomics [here](https://github.com/shankar4/Functional-Genomics/blob/master/Tools/Ubuntu.md).
+9/7/18: Earlier note - ignore: **First upgrading to Ubuntu 18/04, 'Bionic Beaver' as it is available**. Some 3rd parthy entries in my source.list are disabled. Re-enable them later with the 'software properties' tool in the package manager. I had it working as of 9/8/18. There were a few surprises along the way, but all is well now. See Ubuntu.md documentation under Functional Genomics [here](https://github.com/shankar4/Functional-Genomics/blob/master/Tools/Ubuntu.md). There was a big surprise. Eclipse stopped working. At this point I had Ubuntu 18, SystemC 2.3.2 and Eclipse 3.8. The error message on 'java.lang.ClassNotFoundException' led me to this stackoverflow [link](https://stackoverflow.com/questions/3412617/java-lang-classnotfoundexception-org-eclipse-core-runtime-adaptor-eclipsestarte). The suggestion provided there on checking on  jar files listed in eclipse\configuration\config.ini did make sense, but had not worked for some. Exploring other related links led me to discussion and inability to support Eclipse 3.8 any further on Ubuntu. I was ready to give up. However, I contacted Accellera, a non-profit organized to support SystemC activities, I posted this along with a comment: "Apparently Eclipse support for Ubuntu stopped at version 3.8, not the current 4.x. Support may be lacking going forward. Not sure whether it is worth staying with Eclipse." Ameya Vikram Singh responded thus: "You can download the Latest Eclipse package from their website which does work on Ubuntu 18.04.[Eclipse CDT](http://www.eclipse.org/downloads/packages/release/photon/r/eclipse-ide-cc-developers) download the package most pertinent to your system.(e.g. Ubuntu 64-bit download the Linux 64-Bit package). The Eclipse IDE is very well supported on latest Linux Environments." I downloaded on desktop and extracted with a right click. I went through installation in a bit more involved manner, as given here: First, I read Eclipse Project Release Notes in the Eclipse installation folder (in my case, it was here: file:///home/shankar/eclipse/cpp-photon/eclipse/readme/readme_eclipse.html),  and online link on [IRC FAQ](http://wiki.eclipse.org/IRC_FAQ#I_just_installed_Eclipse_on_Linux.2C_but_it_does_not_start._What_is_the_problem.3F). I found that openJDK (also called GCJ) available, and almost the default in Ubuntu Linux, does not work with Eclipse. I had to find the JVM with JRE or JDK that was not connected with OpenJDK. I found two entries in the same JVM file. One of them was this: /usr/lib/jvm/ibm-java80-jre-x86_64/jre/bin/java. I updated the eclipse.ini file located here in the Eclipse installation folder extracted earlier ('eclipse-inst-linux64'):  /home/shankar/Desktop/Install Notes/eclipse-inst-linux64/eclipse-installer/eclipse-inst.ini. This required me to add these two lines, above  the -vmargs line  on two separate lines (see below): 
+>-vm \
+/usr/lib/jvm/ibm-java80-jre-x86_64/jre/bin/java \
+-vmargs \
+
+The new .ini file looked like this:
+>-startup \
+plugins/org.eclipse.equinox.launcher_1.4.0.v20161219-1356.jar \
+--launcher.library \
+plugins/org.eclipse.equinox.launcher.gtk.linux.x86_64_1.1.551.v20171108-1834 \
+--launcher.appendVmargs \
+--launcher.XXMaxPermSize \
+256M \
+-name \
+Eclipse Installer \
+-data \
+@noDefault \
+--launcher.GTK_version \
+2 \
+-vm \
+/usr/lib/jvm/ibm-java80-jre-x86_64/jre/bin/java \
+-vmargs \
+-Xms256M \
+-Xmx1024M \
+
+
 
 ------------------------------------------------------------------------------------------------------
 *Ignore the following*: Moved from Verilog to SystemC. Kept the info for future ref. 
