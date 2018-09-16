@@ -106,69 +106,68 @@ gedit eclipse.desktop
 
 Reboot your machine. Eclpse icon would be added to the Applications collection (fouiund in the dot matrix at left hand side bottom. it should launch correctly when clicked on.
 
+#### Running SystemC projects on Eclipse:
+Launch Eclipse through the desktop launcher ('Applications' section)
+Put the workspace as SystemCSpace
+Once Eclipse is open, \
+
+    File->New->Project->c/C++ -> C++.
+    Call it "HelloWorld".
+    Choose HelloWorld C++ Project and Linux GCC toolchain.
+
+Add paths to systemC folders \
+
+    Click Project->Properties.
+    Navigate to C/C++ Build -> Settings -> Tool Settings tab.
+    Under GCC C++ Compiler -> Includes, >
+    -- 'Add' /usr/local/systemc-2.3.2/include to include paths.
+
+Add systemc dependent library location in C++ linker settings: \
+
+    Under C++Linker -> libraries,
+    add /usr/local/systemc-2.3.2/lib-linux64 to Library Search Paths.
+
+    add systemc and m to libraries
+
+Reboot the PC Open the HelloWorld project, build and Run.
+if it does not run, look at the errors. 
+It should give this result: !!!Hello World!!!
+
+Start a new project 'Hello SystemC'
+(use default hello world project and replace the code there) and include this .cpp code:\
+
+//========================================================================== // Name : Hello.cpp // Author : // Version : // Copyright : Your copyright notice // Description : Hello World in C++, Ansi-style //============================================================================
+
+    #include
+    using namespace std;
+
+All systemc modules should include systemc.h header file \
+
+    #include "systemc.h"
+    //Hello_world is module name
+    SC_MODULE (hello_world) {
+    SC_CTOR (hello_world) {
+    // Nothing in constructor
+    }
+    void say_hello() {
+    //Print "Hello World" to the console.
+    cout << "Hello World.\n";
+    }
+    };
+
+    // sc_main in top level function like in C++ main
+    int sc_main(int argc, char* argv[]) {
+    hello_world hello("HELLO");
+    // Print the hello world
+    hello.say_hello();
+    printf("Hello");
+    return(0);
+    }
 
 
+**Note**: Apparently in Ubuntu, Monospace 14 has the problem of underscore disappearance. However, it is needed, as with SC_MODULE. Go to Window -> Preferences. Select General -> Appearance -> Colors and Fonts. To change the font, click 'Edit Defult' button. Change to Ubunto-mono and font size to 12. 
 
+Also, did this (the first one was good for all, but did this for C++ only, just in case): To change just the C/C++ font select, select C/C++/Editor/C/C++ Editor Text Font and click the 'Edit' button. Choose monspace 15 to solve this problem.
 
+Look for three project folders that are fully functional [here](https://github.com/shankar4/Functional-Model/tree/master/SystemC%20Examples). 
 
-
-
-
-
-
-
-
-
-
-
--------------------
-This is a copy of the backup notes. NEED TO KEEP WHAT IS RELEVANT
-The untarred SystemC folder will be in the home directory. Follow the 'install' file. Works fine till the gmake step. There is no gmake on this system. Now, I will follow the steps at the URL above (i.e., sudo make etc). Worked OK. Now, I am switching back to the install step and do a check: sudo make check - This will compile and run the examples in the subdirectory examples. It passed all the 11 tests
-
-Then, back to URL steps:
-
-    sudo make clean
-    sudo make -j3
-
-Next to do: sudo make install in this directory: ~/systemc-2.3.1/objdir 8/10/2018 (continued):
-
-    sudo make install
-
-Tutorials use /usr/local path. I installed in my home directory - redo soon!
-So, had to replce /usr/local with /home/shankar, in a few steps below.
-I fixed the paths within Eclipse, as given below and the C++ code works.
-
-Export
-
-    export SYSTEMC_HOME=/usr/local/systemc-2.3.1/
-    sudo gedit /etc/environment
-
-#and add lines below
-
-    SYSTEMC_HOME="/usr/local/systemc-2.3.1/"
-    export LD_LIBRARY_PATH=/usr/local/systemc-2.3.1/lib-linux64
-
-gedit accepted these lines, but had some error messages, such as "gedit-encoding not supported".
-From forums, it appears that these are harmless.
-To avoid this problem, use nano or vi, if from command line; else, open gedit from the launcher.
-another possibility is leafpad for command line execution
-
-    sudo apt update
-    sudo apt install leafpad
-
-Another suggestion, helpful for Eclipse.
-
-    sudo apt-get install gksu gedit
-    gksu gedit /usr/share/applications/eclipse-oxygen.desktop
-
-The gksu and gksudo commands allow you to elevate your permissions when running graphical
-applications. More here: http://www.nongnu.org/gksu/
-
-    sudo gedit ~/.bashrc
-    #note: the website missed the gedit part in this command
-
-    SYSTEMC_HOME="/usr/local/systemc-2.3.1/"
-    export LD_LIBRARY_PATH=/usr/local/systemc_2.3.1/lib-linux64:$LD_LIBRARY_PATH
-
-Added these at the end of the file. Same gedit error messages. Could not use the launcher
-since I could not locate these files!
