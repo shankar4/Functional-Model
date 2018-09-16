@@ -1,6 +1,8 @@
-Follow steps here: http://euinovation.blogspot.com/2016/02/systemc-development-of-eclipse-on-linux.html , but modified for installation of SystemC-2.3.2 from [here](http://www.accellera.org/images/downloads/standards/systemc/systemc-2.3.2.zip)
+I follow steps here for SystemC installation on Ubuntu: http://euinovation.blogspot.com/2016/02/systemc-development-of-eclipse-on-linux.html , but modified for installation of SystemC-2.3.2 from [here](http://www.accellera.org/images/downloads/standards/systemc/systemc-2.3.2.zip). Also, The author uses Eclipse 3.8, but today (Sept 2018), we have Eclipse 4.8 (Oxygen) which works just fine with Linux/Ubuntu and SystemC 2.3.2. There are certain things that are done differently when you get to the part on  Eclipse installation. 
 
-Copy/move the systemc2.3.2.tgz from the download directory to the home directory. Extract/untar with a right click on the folder. A new folder with the same name is created in the home directory (in my case, it is /usr/shankar).
+###SystemC 2.3.2. Installation: 
+
+Copy/move the systemc2.3.2.tgz from the download directory of your PC to the home directory. Extract/untar with a right click on the folder. A new folder with the same name is created in the home directory (in my case, it is /usr/shankar).
 
 >sudo apt-get upgrade \
 .. it recommends: sudo apt autoremove – done.
