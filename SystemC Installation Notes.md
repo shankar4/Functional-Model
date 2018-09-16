@@ -1,5 +1,5 @@
 #### Introduction:
-I follow steps here for SystemC installation on Ubuntu from this 2016 [tutorial](http://euinovation.blogspot.com/2016/02/systemc-development-of-eclipse-on-linux.html), but modified for installation of SystemC-2.3.2 from [here](http://www.accellera.org/images/downloads/standards/systemc/systemc-2.3.2.zip). Also, The previous author uses Eclipse 3.8, but today (Sept 2018), we have Eclipse 4.8 (Oxygen) which works just fine with Linux/Ubuntu and SystemC 2.3.2. Ignore comments at stackoverflow that may seem to sugest otherwise. 
+I follow steps here for SystemC installation on Ubuntu from this 2016 [tutorial](http://euinovation.blogspot.com/2016/02/systemc-development-of-eclipse-on-linux.html), but modified for installation of SystemC-2.3.2 from [here](http://www.accellera.org/images/downloads/standards/systemc/systemc-2.3.2.zip). Also, The previous author uses Eclipse 3.8, but today (Sept 2018), we have Eclipse 4.8 (Oxygen) which works just fine with Linux/Ubuntu and SystemC 2.3.2. Ignore comments at stackoverflow that may seem to sugest otherwise. [Accellera](http://forums.accellera.org/) may have more helpful information about SystemC and Eclipse. This tutorial is for Ubuntu V18, SystemC 2.3.2, Eclipse 4.8 (Oxygen), and  JDK8. 
 
 There are certain things that are done differently when you get to the part on  Eclipse installation. I will use my specific username (shankar) in all paths presented below. Just change it to your username; rest of the paths should remain the same, assuming you follow similar use of the desktop, home, and /usr/local directories. If certain messages, error messages, etc., are not clear, you are welcome to look at the 'Backup-SystemC Installation Notes' folder. It has all the raw outputs. 
 
@@ -54,37 +54,43 @@ Move/copy this file (eclipse-inst-linux64.tar.gz) from the download folder to th
 
 There are two good references to help make sure you install correctly. But if you follow my instructions below, you do not need to read through them. More details in my "Backup-SystemC Installation Notes". The first reference is in the installed eclipse installation directory. My reference is here: file:///home/shankar/eclipse/cpp-photon/eclipse/readme/readme_eclipse.html. The other is an online link on [IRC FAQ](http://wiki.eclipse.org/IRC_FAQ#I_just_installed_Eclipse_on_Linux.2C_but_it_does_not_start._What_is_the_problem.3F). 
 
-I found that openJDK (also called GCJ) available, and almost the default in Ubuntu Linux, does not work with Eclipse. I had to find the JVM with JRE or JDK that was not connected with OpenJDK. I found two entries in the same JVM file. One of them was this: /usr/lib/jvm/ibm-java80-jre-x86_64/jre/bin/java. I updated the eclipse.ini file located here in the Eclipse installation folder extracted earlier ('eclipse-inst-linux64'): /home/shankar/Desktop/Install Notes/eclipse-inst-linux64/eclipse-installer/eclipse-inst.ini. This required me to add these two lines, above the -vmargs line on two separate lines (see below):
+In summary, do not use openJDK (or GCJ) for your JVM in the steps below. You will find another JVM, perhaps from IBM or Oracle. Use that. I used this: /usr/lib/jvm/ibm-java80-jre-x86_64/jre/bin/java. 
 
-    -vm
-    /usr/lib/jvm/ibm-java80-jre-x86_64/jre/bin/java
-    -vmargs \
+Update the eclipse.ini file located in the Eclipse installation folder extracted earlier ('eclipse-inst-linux64'): /home/shankar/Desktop/Install Notes/eclipse-inst-linux64/eclipse-installer/eclipse-inst.ini. 
 
-The new .ini file looked like this:
+Open the file in a text editor (gedit is fine) and add these two lines and save, above the -vmargs line on two separate lines:
 
-    -startup
-    plugins/org.eclipse.equinox.launcher_1.4.0.v20161219-1356.jar
-    --launcher.library
-    plugins/org.eclipse.equinox.launcher.gtk.linux.x86_64_1.1.551.v20171108-1834
-    --launcher.appendVmargs
-    --launcher.XXMaxPermSize
-    256M
-    -name
-    Eclipse Installer
-    -data
-    @noDefault
-    --launcher.GTK_version
-    2
-    -vm
-    /usr/lib/jvm/ibm-java80-jre-x86_64/jre/bin/java
-    -vmargs
-    -Xms256M
-    -Xmx1024M
-    After saving it, I double clicked on the 'eclipse-inst' at the same level as the eclipse.ini file. this automatically installed the ecllpse folder to /usr/shankar/eclipse. The .exe file will be here: /home/shankar/eclipse/cpp-photon/eclipse/eclipse.exe. I double clicked on it and launched Eclipse and it launched just fine. I directed to my workspace at 'SystemCspace' and tried out my 3 examples. I had to update the links to systemC 2.3.2 libraries now installed under /usr/local (see notes elsewhere), rebuild and run. All of them ran fine.
+>-vm \
+/usr/lib/jvm/ibm-java80-jre-x86_64/jre/bin/java \
+-vmargs 
 
-For eaay accessibility, I right clicked on this .exe file and copy/pasted it to desktop. Unforuntely, it is a generic diamond symbol and it would be nice to associate with the actual eclipse icon. There was a solution for that here. Here are the steps, as relevant to my system:
+The new .ini file looks like this:
 
-cd to /home/shankar/.local/share/applications/ and open gedit with filename of eclipse.desktop, and enter (copy and paste with appropriate change for username in place of shankar):
+>-startup \
+plugins/org.eclipse.equinox.launcher_1.4.0.v20161219-1356.jar \
+--launcher.library \
+plugins/org.eclipse.equinox.launcher.gtk.linux.x86_64_1.1.551.v20171108-1834 \
+--launcher.appendVmargs \
+--launcher.XXMaxPermSize \
+256M \
+-name \
+Eclipse Installer \
+-data \
+@noDefault \
+--launcher.GTK_version \
+2 \
+**-vm \
+/usr/lib/jvm/ibm-java80-jre-x86_64/jre/bin/java** \
+-vmargs \
+-Xms256M \
+-Xmx1024M
+
+After saving it, double click on 'eclipse-inst', found at the same level as the eclipse.ini file. This automatically installs the ecllpse folder to /usr/shankar/eclipse. The .exe file will be here: /home/shankar/eclipse/cpp-photon/eclipse/eclipse.exe. Double click on it to launch Eclipse and it should launch just fine. Set up your workspace (Mine is labeled 'SystemCspace'). It is time to enter SystemC code and run programs!
+ 
+You can avoid accessing this deeply embedded .exe file by  adding an Eclipse icon to the desktop:
+>cd  /home/shankar/.local/share/applications/ \
+gedit eclipse.desktop
+--and enter and save (copy and paste with appropriate change for username in place of shankar):
 
     [Desktop Entry]
     Version=1.0
@@ -98,9 +104,9 @@ cd to /home/shankar/.local/share/applications/ and open gedit with filename of e
     icon=/home/shankar/eclipse/cpp-photon/eclipse/icon.xpm
     Name[en_US]=Eclipse \
 
-Save the file. Reboot your machine. I found the Eclpse icon in the dot matrix at left hand side bottom ('Applications'). it launched correctly when clicked on.
+Reboot your machine. Eclpse icon would be added to the Applications collection (fouiund in the dot matrix at left hand side bottom. it should launch correctly when clicked on.
 
-So, I am where I was 4 days ago. Need to try out the many SystemC examples that came with the SystemC 2.3.2 folder. Also, examples from Grotker's book. All this is documented here, lest I forget. Soon, i will put together a tutorial style installation document on Systemc 2.3.2 installation on Ubuntu V 18 using Eclipse 4.8 (Oxygen). It uses Java SDK 8.
+
 
 
 
