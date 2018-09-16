@@ -21,28 +21,42 @@ Copy/move the systemc2.3.2.tgz from the download directory on your PC to the hom
 **Continued here**:
 >cd systemc-2.3.2 \
 sudo mkdir /usr/local/systemc-2.3.2 \
+mkdir objdir \
+cd objdir \
+sudo ../configure –prefix=/usr/local/systemc-2.3.2 \
+export CXX=g++ 
 
-mkdir objdir
-cd objdir
+>sudo make \
+sudo make clean \
+sudo make -j3 \
+sudo make install \
+export SYSTEMC_HOME=/usr/local/systemc-2.3.2/ 
 
-sudo ../configure –prefix=/usr/local/systemc-2.3.2
+**Smart quotes are essential for the following steps**. Details are found here [here](https://vinaydvd.wordpress.com/2012/05/30/installing-systemc-in-ubuntu/). But you should be able to just copy and paste from here, if you do not wish to understand
+how to obtain smart quotes from your keyhboard \
 
-export CXX=g++
+>sudo gedit /etc/environment \
+---and add:
+SYSTEMC_HOME=”/usr/local/systemc-2.3.2/” \
+export LD_LIBRARY_PATH=/usr/local/systemc-2.3.2/lib-linux64 
 
-sudo make
-sudo make clean
-sudo make -j3
-sudo make install
-export SYSTEMC_HOME=/usr/local/systemc-2.3.2/
+>sudo gedit ~/.bashrc \
+---and add:
+SYSTEMC_HOME=”/usr/local/systemc-2.3.2/” \
+export LD_LIBRARY_PATH=/usr/local/systemc-2.3.2/lib-linux64:$LD_LIBRARY_PATH
 
-Smart quote are needed. Details [here](https://vinaydvd.wordpress.com/2012/05/30/installing-systemc-in-ubuntu/)  \
 
-sudo gedit /etc/environment and add:
-     SYSTEMC_HOME=”/usr/local/systemc-2.3.2/”
-     export LD_LIBRARY_PATH=/usr/local/systemc-2.3.2/lib-linux64
-sudo gedit ~/.bashrc and add:
-	SYSTEMC_HOME=”/usr/local/systemc-2.3.2/”
-     export LD_LIBRARY_PATH=/usr/local/systemc-2.3.2/lib-linux64:$LD_LIBRARY_PATH
+
+
+
+
+
+
+
+
+
+
+
 -------------------
 This is a copy of the backup notes. NEED TO KEEP WHAT IS RELEVANT
 The untarred SystemC folder will be in the home directory. Follow the 'install' file. Works fine till the gmake step. There is no gmake on this system. Now, I will follow the steps at the URL above (i.e., sudo make etc). Worked OK. Now, I am switching back to the install step and do a check: sudo make check - This will compile and run the examples in the subdirectory examples. It passed all the 11 tests
