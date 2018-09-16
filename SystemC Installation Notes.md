@@ -165,13 +165,13 @@ All systemc modules should include systemc.h header file \
     }
 
 
-**Note**: Apparently in Ubuntu, Monospace 14 has the problem of underscore disappearance. However, it is needed, as with SC_MODULE. 
+**Note**: Apparently in Ubuntu, Monospace 14 has the problem of underscore disappearance. However, it is needed, as with SC_MODULE. Looks like this has been taken care of in the latest releases. Either way, check to make sure it is so. If not, make the change. 
 
 >Go to Window -> Preferences. Select General -> Appearance -> Colors and Fonts. \
 To change the font, click 'Edit Defult' button. Change to Ubunto-mono and font size to 12. 
 
-*Note: The following two lines do not make sense. They may not have been done*:
-Also, do this for C++ only, just in case:
+*Note: The following two lines do not make sense. Ignore - taken from a posting; may be wrong. Also should not be needed*:
+For C++ only, just in case:
 >select C/C++/Editor/C/C++ Editor Text Font and click the 'Edit' button. Choose monspace 12.
 
 I have three projects that are fully functional [here](https://github.com/shankar4/Functional-Model/tree/master/SystemC%20Examples). Download and import into Excel, build and run.
